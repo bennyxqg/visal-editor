@@ -18,7 +18,7 @@ export default function getButtonInstance(params = {}) {
   } = params;
   return {
     Component: Button,
-    label: 'Button',
+    label: 'Button555',
     import: 'Button',
     // 这部分内容会被添加到页面代码中，todo: 自动判断生成
     constructorCode: 'this.handleClick = this.handleClick.bind(this);',

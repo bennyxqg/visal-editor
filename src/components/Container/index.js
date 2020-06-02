@@ -5,7 +5,7 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
 
-import Nav from '../../components/Sources/modules/Nav'
+// import Nav from '../../components/Sources/modules/Nav'
 
 import store from '../../store';
 import {
@@ -105,7 +105,7 @@ class Container extends React.Component {
     return instances.map((instance, index) => {
       return (
         <div>
-          <Nav />
+          {/* <Nav /> */}
           <Field
             key={instance.uuid}
             index={index}

@@ -137,7 +137,7 @@ class Field extends React.Component {
     
     const modal = (
       <Modal
-        title="编辑组件"
+        title="编辑组件3"
         visible={editorModalVisible}
         onOk={this.hideEditorModal}
         onCancel={this.hideEditorModal}
@@ -188,13 +188,16 @@ class Field extends React.Component {
     }
 
     let content = (
-      <div className="field" style={{ background: backgroundColor, opacity }}>
-        <div className="edit__wrapper">
-          {/* {operators} */}
-          {instanceCom}
-        </div>
-        {modal}
+      <div>
+        {instanceCom}
       </div>
+      // <div className="field" style={{ background: backgroundColor, opacity }}>
+      //   <div className="edit__wrapper">
+      //     {operators}
+      //     {instanceCom}
+      //   </div>
+      //   {modal}
+      // </div>
     );
     return connectDragPreview(connectDropTarget(content));
   }
