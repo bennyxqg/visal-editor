@@ -14,31 +14,53 @@ class BaseModule extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show_edit_style: false,             //是否显示编辑样式
+            showEditPanel: false,             //是否显示编辑样式
             editorModalVisible: false,            //是否显示编辑弹框
             edit_style: {
-                // position: 'absolute',
                 border: '0.5px dashed black',
-                // padding: '0.5rem 1rem',
                 cursor: 'move',
-            }
+            },
+            moduleData:{}
         }
     }
 
-    mouseOverHandle = () => {
-        this.setState({
-            edit_style: {
-                // position: 'absolute',
-                border: '0.5px dashed black',
-                // padding: '0.5rem 1rem',
-                cursor: 'move'
-            },
-        });
+    editModuleHandle = () => {
+        console.log('editComponent');
+        this.setState({editorModalVisible:true})
     }
 
-    mouseOutHandle = () => {
-        this.setState({ edit_style: {} });
-        this.edit_style = {};
+    removeModuleHandle = () => {
+    }
+
+    editOk=()=>{
+        console.log('editOk');
+        this.setState({editorModalVisible:false})
+    }
+
+    editCancel=()=>{
+        console.log('editCancel');
+        this.setState({editorModalVisible:false})
+    }
+
+    mouseOverHandle = (e) => {
+        this.setState({
+            showEditPanel: true,
+            edit_style: {
+                border: '0.5px dashed black',
+                cursor: 'move',
+            }
+        })
+
+    }
+    
+
+    mouseOutHandle = (e) => {
+        this.setState({
+            showEditPanel: false,
+            edit_style: {
+                
+            }
+        })
     }
 
 

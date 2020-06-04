@@ -18,7 +18,7 @@ import store from './store';
 // util
 import createSourceCode from './common/create-source';
 import createPageCode from './common/create-page';
-import createZip from './common/create-zip';
+import exitHandle from './common/create-zip';
 
 import renderComponent from './common/renderComponent';
 import { createInstances } from './common/util';
@@ -51,10 +51,8 @@ class App extends React.Component {
       previewModalVisible: false,
     });
   }
-  showKmsConfigModal = () => {
-    this.setState({
-      kmsConfigModalVisible: true,
-    });
+  saveHandle = () => {
+    
   }
   hideKmsConfigModal = () => {
     this.setState({
@@ -75,16 +73,8 @@ class App extends React.Component {
   /**
    * 预览源代码
    */
-  previewSource = () => {
-    this.showCodeModal(() => {
-      const code = this.createCode();
-      this.setState({
-        code: code,
-      }, () => {
-        const codeContainer = findDOMNode(this.codeCon);
-        window.hljs.highlightBlock(codeContainer);
-      });
-    });
+  saveAndPublish = () => {
+    
   }
   /**
    * 下载单个文件
@@ -104,16 +94,14 @@ class App extends React.Component {
     }, cb);
   };
   hideCodeModal = () => {
-    this.setState({
-      codeVisible: false,
-    });
+    
   };
   /**
    * 生成 Zip 包
    */
-  createZip = () => {
+  exitHandle = () => {
     const pageCode = this.createCode();
-    createZip(pageCode);
+    exitHandle(pageCode);
   }
   /** 
    * 初始化 KMS 模板页
@@ -167,16 +155,16 @@ class App extends React.Component {
           <Header style={{ background: '#fff', paddingLeft: 24 }}>
             <Button 
               type="primary" 
-              onClick={this.showKmsConfigModal}
+              onClick={this.saveHandle}
             >
-              初始化 KMS 模板页
+              保存
             </Button>
             <Button 
               type="primary" 
               style={{ marginLeft: 20 }}
-              onClick={this.previewSource}
+              onClick={this.saveAndPublish}
             >
-              查看源码
+              发布并保存
             </Button>
             <Button
               type="primary"
@@ -186,22 +174,15 @@ class App extends React.Component {
             </Button>
             <Button
               style={{ marginLeft: 20 }}
-              type="primary"
-              onClick={this.downloadSingleFile}
+              onClick={this.exitHandle}
             >
-              下载单个文件
-            </Button>
-            <Button
-              style={{ marginLeft: 20 }}
-              onClick={this.createZip}
-            >
-              生成代码压缩包
+              关闭
             </Button>
             <Button
               style={{ marginLeft: 20 }}
               onClick={this.emptyCompnents}
             >
-              清空页面
+              重置
             </Button>
           </Header>
           <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
@@ -209,9 +190,6 @@ class App extends React.Component {
               <Container {...this.props} />
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Created by KUJIALE
-          </Footer>
         </Layout>
         <Modal
           title="查看代码"
